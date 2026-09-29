@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Design for portfolio :0 </title>
+    <!-- i like eating thermal paste -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 60px 20px;
+            letter-spacing: -0.02em;
+        }
+        .cover {
+            width: 100%;
+            max-width: 940px;
+            height: 750px;
+            background-color: #f73859;
+            border: 20px solid #0d0d0d;
+            outline: 2px solid #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        .background-title {
+            position: absolute;
+            font-size: 9rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.12);
+            line-height: 0.8;
+            letter-spacing: -7px;
+            top: 80px;
+            left: 30px;
+            right: 30px;
+            user-select: none;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .background-title {
+                font-size: 6rem;
+                letter-spacing: -3px;
+                top: 120px;
+            }
+            .cover { height: 600px; padding: 20px; }
+        }
+        .top-row {
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #0d0d0d;
+            border-bottom: 3px solid #0d0d0d;
+            padding-bottom: 15px;
+        }
+        .main-content {
+            z-index: 2;
+            background: #0d0d0d;
+            padding: 35px;
+            border-radius: 2px;
+            margin-top: auto;
+            margin-bottom: 20px;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.15);
+            max-width: 550px;
+            border-left: 5px solid #ffffff;
+        }
+        .title-primary {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+            line-height: 0.95;
+            margin-bottom: 15px;
+        }
+        .text-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #a6a6a6;
+        }
+        .footer-row {
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            color: #0d0d0d;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .content-section {
+            width: 100%;
+            max-width: 940px;
+            margin-top: 20px;
+            border-top: 2px solid #ffffff;
+            padding-top: 50px;
+            position: relative;
+        }
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            padding-bottom: 120px;
+        }
+        @media (min-width: 768px) {
+            .magazine-grid {
+                grid-template-columns: 1.2fr 2fr;
+            }
+        }
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .picture-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background-color: #f73859;
+            border: 3px double rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .picture-placeholder::before {
+            content: 'FIG. 01';
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 0.65rem;
+            opacity: 0.7;
+        }
+        .editorial-credit {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888888;
+            line-height: 1.6;
+            border-left: 2px solid #f73859;
+            padding-left: 15px;
+        }
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .info-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: -2px;
+            line-height: 0.9;
+        }
+        .info-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f73859;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: -10px;
+        }
+        .text-row-split {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 900px) {
+            .text-row-split {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .info-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #b3b3b3;
+            text-align: justify;
+        }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.2rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            font-weight: 900;
+            color: #f73859;
+        }
+        .quote-breakout {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 20px 0;
+            margin: 10px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.4;
+            grid-column: 1 / -1; 
+        }
+        .brand-logo-container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background-color: #0d0d0d;
+            padding: 20px 0px 20px 20px;
+            font-family: Arial, sans-serif;
+            user-select: none;
+            z-index: 5;
+        }
+        .logo-box {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            border: 4px solid #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-bracket {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-top: 4px solid #f73859;
+            border-left: 4px solid #f73859;
+            top: 4px;
+            left: 4px;
+        }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #f73859;
+            border-radius: 50%;
+        }
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text-top {
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .logo-text-bottom {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #f73859;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover">
+        <div class="background-title">Plagiarism at Scale</div>
+        <div class="top-row">
+            <div>A NEW PERSPECTIVE</div>
+            <div>9/26/2026</div>
+        </div>
+        <div class="main-content">
+            <h1 class="title-primary">The Art of Copying</h1>
+            <p class="text-desc">got the title and text form a shirt    ...An exploration into modern creative theft, rapid scaling systems, and original conceptual frameworks. Designed for standard layout presentation profiles.</p>
+        </div>
+        <div class="footer-row">
+            <div>DESIGN PORTFOLIO</div>
+            <div>BY CHEESEBURGER :P</div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="magazine-grid">
+            <div class="left-panel">
+                <div class="picture-placeholder">
+                     [image]
+                </div>
+                <div class="editorial-credit">
+                    <strong>potato</strong> <br>
+                </div>
+            </div>
+            
+            <div class="info-column">
+                <h2 class="info-title">title</h2>
+                <div class="info-subtitle">shouldve used Tailwind ;[</div>
+                
+                <div class="text-row-split">
+                    <p class="info-text drop-cap">code available on my github repository  https://github.com/Cheese0burger ...  goes here text goes here text goes heretext goes heretext goes heretext goes heretext goes here  text goes here text goes here</p>
+                    
+                    <div class="quote-breakout">
+                        "text goes here text goes heretext goes here text goes heretext goes heretext goes heretext goes here"
+                    </div>
+                    
+                    <p class="info-text">text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here text goes here</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="brand-logo-container">
+            <div class="logo-box">
+                <div class="logo-bracket"></div>
+                <div class="logo-dot"></div>
+            </div>
+            <div class="logo-text-wrapper">
+                <span class="logo-text-top">CORE</span>
+                <span class="logo-text-bottom">TECH LAB</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
